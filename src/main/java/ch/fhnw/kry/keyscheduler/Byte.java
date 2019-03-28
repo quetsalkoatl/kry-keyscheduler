@@ -1,6 +1,7 @@
 package ch.fhnw.kry.keyscheduler;
 
-import static ch.fhnw.kry.keyscheduler.Base.*;
+import static ch.fhnw.kry.keyscheduler.Base.BIN;
+import static ch.fhnw.kry.keyscheduler.Base.HEX;
 
 public class Byte {
 
