@@ -13,7 +13,6 @@ public class KeyScheduleTest {
 
     @Test
     public void testKeyExpansion1() {
-
         Byte[] key = {
                 new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
                 new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
@@ -38,12 +37,10 @@ public class KeyScheduleTest {
         Word[] result = KeySchedule.keyExpansion(key);
 
         assertArrayEquals(expected, result);
-
     }
 
     @Test
     public void testKeyExpansion2() {
-
         Byte[] key = {
                 new Byte("ff"), new Byte("ff"), new Byte("ff"), new Byte("ff"),
                 new Byte("ff"), new Byte("ff"), new Byte("ff"), new Byte("ff"),
@@ -68,12 +65,10 @@ public class KeyScheduleTest {
         Word[] result = KeySchedule.keyExpansion(key);
 
         assertArrayEquals(expected, result);
-
     }
 
     @Test
     public void testKeyExpansion3() {
-
         Byte[] key = {
                 new Byte("00"), new Byte("01"), new Byte("02"), new Byte("03"),
                 new Byte("04"), new Byte("05"), new Byte("06"), new Byte("07"),
@@ -98,12 +93,10 @@ public class KeyScheduleTest {
         Word[] result = KeySchedule.keyExpansion(key);
 
         assertArrayEquals(expected, result);
-
     }
 
     @Test
     public void testKeyExpansion4() {
-
         Byte[] key = {
                 new Byte("69"), new Byte("20"), new Byte("e2"), new Byte("99"),
                 new Byte("a5"), new Byte("20"), new Byte("2a"), new Byte("6d"),
@@ -128,12 +121,10 @@ public class KeyScheduleTest {
         Word[] result = KeySchedule.keyExpansion(key);
 
         assertArrayEquals(expected, result);
-
     }
 
     @Test
     public void testKeyExpansionFail() {
-
         Byte[] key = {
                 new Byte("69"), new Byte("20"), new Byte("e2"), new Byte("99"),
                 new Byte("a5"), new Byte("20"), new Byte("2a"), new Byte("6d"),
@@ -159,12 +150,10 @@ public class KeyScheduleTest {
         Word[] result = KeySchedule.keyExpansion(key);
 
         assertFalse(Arrays.equals(expected, result));
-
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testKeyExpansionException1() {
-
         Byte[] key = {
                 new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
                 new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
@@ -173,12 +162,10 @@ public class KeyScheduleTest {
         };
 
         KeySchedule.keyExpansion(key);
-
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testKeyExpansionException2() {
-
         Byte[] key = {
                 new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
                 new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
@@ -188,7 +175,6 @@ public class KeyScheduleTest {
         };
 
         KeySchedule.keyExpansion(key);
-
     }
 
 }
