@@ -154,7 +154,7 @@ public class KeyScheduleTest {
                 new Word("ff 8b cc f2"), new Word("51 e2 ff 5c"), new Word("5c 32 a3 e7"), new Word("93 1f 6d 19"),
                 new Word("24 b7 18 2e"), new Word("75 55 e7 72"), new Word("29 67 44 95"), new Word("ba 78 29 8c"),
                 new Word("ae 12 7c da"), new Word("db 47 99 a8"), new Word("f2 20 df 3d"), new Word("48 58 f6 b1")
-        }; //                                    bit changed here: ^
+        }; //                           bit changed here: ^
 
         Word[] result = KeySchedule.keyExpansion(key);
 
