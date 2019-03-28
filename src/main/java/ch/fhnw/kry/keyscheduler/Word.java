@@ -24,7 +24,7 @@ public class Word {
             int beg = word.length() - base.getSize()*(i+1);
             int end = word.length() - base.getSize()*i;
             String pt = word.substring(beg > 0 ? beg : 0, end > 0 ? end : 0);
-            this.bytes[j] = new Byte(pt.length() == 0 ? "00" : pt);
+            this.bytes[j] = new Byte(pt.length() == 0 ? "00" : pt, base);
         }
     }
 
@@ -75,6 +75,11 @@ public class Word {
         if (o == null || getClass() != o.getClass()) return false;
         Word word = (Word) o;
         return Arrays.equals(bytes, word.bytes);
+    }
+
+    @Override
+    public String toString() {
+        return getHex();
     }
 
 }

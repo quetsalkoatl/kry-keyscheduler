@@ -1,7 +1,5 @@
 package ch.fhnw.kry.keyscheduler;
 
-import java.util.Objects;
-
 import static ch.fhnw.kry.keyscheduler.Base.*;
 
 public class Byte {
@@ -11,17 +9,19 @@ public class Byte {
 
     private String hex;
 
-    public Byte(String nr, Base base) {
-        nr = nr.replace(" ", "");
-        this.hex = Integer.toString(Integer.parseInt(nr, base.getBase()), HEX.getBase());
-    }
-
-    public Byte(String nr) {
-        this(nr, HEX);
-    }
-
     public Byte(int dez) {
+        if (dez < 0 || dez > 255 ) {
+            throw new IllegalArgumentException("Only numbers between 0 and 255 allowed");
+        }
         this.hex = Integer.toString(dez, HEX.getBase());
+    }
+
+    public Byte(String nr, Base base) {
+        this(Integer.parseInt(nr, base.getBase()));
+    }
+
+    public Byte(String hex) {
+        this(hex, HEX);
     }
 
     public static Byte xor(Byte b1, Byte b2) {
@@ -29,7 +29,7 @@ public class Byte {
     }
 
     public String getHex() {
-        return hex.length() <= 2 ? BIN_ZEROES.substring(hex.length()) + hex : hex;
+        return hex.length() <= 2 ? HEX_ZEROES.substring(hex.length()) + hex : hex;
     }
 
     public String getBin() {
@@ -46,7 +46,12 @@ public class Byte {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Byte b = (Byte) o;
-        return hex.equalsIgnoreCase(b.hex);
+        return getDez() == b.getDez();
+    }
+
+    @Override
+    public String toString() {
+        return getHex();
     }
 
 }
