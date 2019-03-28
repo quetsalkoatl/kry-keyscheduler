@@ -17,11 +17,11 @@ public class Word {
     }
 
     public Word(String word, Base base) {
-        if(base == Base.DEZ) {
+        if (base == Base.DEZ) {
             throw new IllegalArgumentException("decimal not allowed!");
         }
         word = word.replace(" ", "");
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             int beg = word.length() - base.getSize()*(i+1);
             int end = word.length() - base.getSize()*i;
             String pt = word.substring(beg > 0 ? beg : 0, end > 0 ? end : 0);
@@ -48,7 +48,7 @@ public class Word {
 
     public static Word xor(Word w1, Word w2) {
         Word ret = new Word();
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             ret.bytes[i] = Byte.xor(w1.bytes[i], w2.bytes[i]);
         }
         return ret;

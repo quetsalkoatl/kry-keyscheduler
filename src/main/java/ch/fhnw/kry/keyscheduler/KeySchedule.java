@@ -16,7 +16,7 @@ public class KeySchedule {
         }
         Word[] w = new Word[44];
         for (int i = 0; i < 4; i++) {
-            w[i] = new Word(key[4*i],key[4*i+1],key[4*i+2],key[4*i+3]);
+            w[i] = new Word(key[4*i],key[4*i + 1],key[4*i + 2],key[4*i + 3]);
         }
         for (int i = 4; i < 44; i++) {
             Word tmp = w[i-1];
