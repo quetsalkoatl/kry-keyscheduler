@@ -141,6 +141,8 @@ public class KeyScheduleTest {
                 new Byte("69"), new Byte("74"), new Byte("6f"), new Byte("2a")
         };
 
+        // one bit changed                                         |
+        // row and col marked with arrow                           V
         Word[] expected = {
                 new Word("69 20 e2 99"), new Word("a5 20 2a 6d"), new Word("65 6e 63 68"), new Word("69 74 6f 2a"),
                 new Word("fa 88 07 60"), new Word("5f a8 2d 0d"), new Word("3a c6 4e 65"), new Word("53 b2 21 4f"),
@@ -152,7 +154,7 @@ public class KeyScheduleTest {
                 new Word("a7 00 77 78"), new Word("ae 69 33 ae"), new Word("0d d0 5c bb"), new Word("cf 2d ce fe"),
                 new Word("ff 8b cc f2"), new Word("51 e2 ff 5c"), new Word("5c 32 a3 e7"), new Word("93 1f 6d 19"),
                 new Word("24 b7 18 2e"), new Word("75 55 e7 72"), new Word("29 67 44 95"), new Word("ba 78 29 8c"),
-                new Word("ae 12 71 da"), new Word("db 47 9b a8"), new Word("f2 20 df 3d"), new Word("48 58 f6 b1")
+                new Word("ae 12 7c da"), new Word("db 47 99 a8"), new Word("f2 20 df 3d"), new Word("48 58 f6 b1")  // <-- changed bit
         };
 
         Word[] result = KeySchedule.keyExpansion(key);
