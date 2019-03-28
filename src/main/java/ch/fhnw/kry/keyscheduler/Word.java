@@ -21,11 +21,11 @@ public class Word {
             throw new IllegalArgumentException("decimal not allowed!");
         }
         word = word.replace(" ", "");
-        for(int i = 0, j = 3; i < 4; i++, j--) {
+        for(int i = 0; i < 4; i++) {
             int beg = word.length() - base.getSize()*(i+1);
             int end = word.length() - base.getSize()*i;
             String pt = word.substring(beg > 0 ? beg : 0, end > 0 ? end : 0);
-            this.bytes[j] = new Byte(pt.length() == 0 ? "00" : pt, base);
+            this.bytes[3-i] = new Byte(pt.length() == 0 ? "00" : pt, base);
         }
     }
 
