@@ -12,6 +12,8 @@ public class WordTest {
         Word w2 = new Word("00010010 00110100 01010110 01111000", Base.BIN);
 
         assertEquals(w1, w2);
+        assertEquals("12 34 56 78", w2.getHex());
+        assertEquals("00010010 00110100 01010110 01111000", w1.getBin());
     }
 
     @Test

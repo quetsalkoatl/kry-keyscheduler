@@ -17,7 +17,7 @@ public class Byte {
     }
 
     public Byte(String nr, Base base) {
-        this(Integer.parseInt(nr, base.getBase()));
+        this(Integer.parseInt(nr.replace(" ", ""), base.getBase()));
     }
 
     public Byte(String hex) {

@@ -9,9 +9,9 @@ public class ByteTest {
     @Test
     public void testInit() {
         Byte b1 = new Byte(0);
-        Byte b2 = new Byte("00000001", Base.BIN);
+        Byte b2 = new Byte("0000 0001", Base.BIN);
         Byte b3 = new Byte(120);
-        Byte b4 = new Byte("fe");
+        Byte b4 = new Byte("f e");
         Byte b5 = new Byte(255);
 
         assertEquals("00", b1.getHex());

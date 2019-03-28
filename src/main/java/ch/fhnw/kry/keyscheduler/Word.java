@@ -1,6 +1,8 @@
 package ch.fhnw.kry.keyscheduler;
 
 import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Word {
 
@@ -54,19 +56,15 @@ public class Word {
     }
 
     public String getHex() {
-        StringBuilder sb = new StringBuilder(8);
-        for (Byte b : bytes) {
-            sb.append(b.getHex());
-        }
-        return sb.toString();
+        return Arrays.stream(bytes)
+                .map(Byte::getHex)
+                .collect(Collectors.joining(" "));
     }
 
     public String getBin() {
-        StringBuilder sb = new StringBuilder(8);
-        for (Byte b : bytes) {
-            sb.append(b.getBin());
-        }
-        return sb.toString();
+        return Arrays.stream(bytes)
+                .map(Byte::getBin)
+                .collect(Collectors.joining(" "));
     }
 
     @Override
