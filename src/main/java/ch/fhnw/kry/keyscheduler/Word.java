@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Word {
 
-    private Byte[] bytes = new Byte[4];
+    private final Byte[] bytes = new Byte[4];
 
     private Word() {}
 

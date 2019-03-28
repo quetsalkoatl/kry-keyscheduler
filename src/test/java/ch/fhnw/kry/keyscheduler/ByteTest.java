@@ -52,4 +52,14 @@ public class ByteTest {
         assertEquals(ex3, Byte.xor(b1, b4));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testInitException1() {
+        new Byte("a93");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInitException2() {
+        new Byte(-23);
+    }
+
 }

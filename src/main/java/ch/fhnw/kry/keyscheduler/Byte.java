@@ -7,13 +7,13 @@ public class Byte {
     private static final String BIN_ZEROES = "00000000";
     private static final String HEX_ZEROES = "00";
 
-    private String hex;
+    private int dez;
 
     public Byte(int dez) {
         if (dez < 0 || dez > 255 ) {
             throw new IllegalArgumentException("Only numbers between 0 and 255 allowed");
         }
-        this.hex = Integer.toString(dez, HEX.getBase());
+        this.dez = dez;
     }
 
     public Byte(String nr, Base base) {
@@ -29,16 +29,17 @@ public class Byte {
     }
 
     public String getHex() {
+        String hex = Integer.toString(dez, HEX.getBase());
         return hex.length() <= 2 ? HEX_ZEROES.substring(hex.length()) + hex : hex;
     }
 
     public String getBin() {
-        String bin = Integer.toString(Integer.parseInt(hex, HEX.getBase()), BIN.getBase());
+        String bin = Integer.toString(dez, BIN.getBase());
         return bin.length() <= 8 ? BIN_ZEROES.substring(bin.length()) + bin : bin;
     }
 
     public int getDez() {
-        return Integer.parseInt(hex, HEX.getBase());
+        return dez;
     }
 
     @Override

@@ -2,7 +2,7 @@ package ch.fhnw.kry.keyscheduler;
 
 public class SubBytes {
 
-    private static Byte[] sbox = {
+    private static final Byte[] sbox = {
             new Byte("63"), new Byte("7c"), new Byte("77"), new Byte("7b"),
             new Byte("f2"), new Byte("6b"), new Byte("6f"), new Byte("c5"),
             new Byte("30"), new Byte("01"), new Byte("67"), new Byte("2b"),
