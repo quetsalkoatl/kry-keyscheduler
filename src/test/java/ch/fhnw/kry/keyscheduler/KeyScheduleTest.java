@@ -2,6 +2,8 @@ package ch.fhnw.kry.keyscheduler;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 /**
@@ -126,6 +128,65 @@ public class KeyScheduleTest {
         Word[] result = KeySchedule.keyExpansion(key);
 
         assertArrayEquals(expected, result);
+
+    }
+
+    @Test
+    public void testKeyExpansionFail() {
+
+        Byte[] key = {
+                new Byte("69"), new Byte("20"), new Byte("e2"), new Byte("99"),
+                new Byte("a5"), new Byte("20"), new Byte("2a"), new Byte("6d"),
+                new Byte("65"), new Byte("6e"), new Byte("63"), new Byte("68"),
+                new Byte("69"), new Byte("74"), new Byte("6f"), new Byte("2a")
+        };
+
+        Word[] expected = {
+                new Word("69 20 e2 99"), new Word("a5 20 2a 6d"), new Word("65 6e 63 68"), new Word("69 74 6f 2a"),
+                new Word("fa 88 07 60"), new Word("5f a8 2d 0d"), new Word("3a c6 4e 65"), new Word("53 b2 21 4f"),
+                new Word("cf 75 83 8d"), new Word("90 dd ae 80"), new Word("aa 1b e0 e5"), new Word("f9 a9 c1 aa"),
+                new Word("18 0d 2f 14"), new Word("88 d0 81 94"), new Word("22 cb 61 71"), new Word("db 62 a0 db"),
+                new Word("ba ed 96 ad"), new Word("32 3d 17 39"), new Word("10 f6 76 48"), new Word("cb 94 d6 93"),
+                new Word("88 1b 4a b2"), new Word("ba 26 5d 8b"), new Word("aa d0 2b c3"), new Word("61 44 fd 50"),
+                new Word("b3 4f 19 5d"), new Word("09 69 44 d6"), new Word("a3 b9 6f 15"), new Word("c2 fd 92 45"),
+                new Word("a7 00 77 78"), new Word("ae 69 33 ae"), new Word("0d d0 5c bb"), new Word("cf 2d ce fe"),
+                new Word("ff 8b cc f2"), new Word("51 e2 ff 5c"), new Word("5c 32 a3 e7"), new Word("93 1f 6d 19"),
+                new Word("24 b7 18 2e"), new Word("75 55 e7 72"), new Word("29 67 44 95"), new Word("ba 78 29 8c"),
+                new Word("ae 12 71 da"), new Word("db 47 9b a8"), new Word("f2 20 df 3d"), new Word("48 58 f6 b1")
+        };
+
+        Word[] result = KeySchedule.keyExpansion(key);
+
+        assertFalse(Arrays.equals(expected, result));
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testKeyExpansionException1() {
+
+        Byte[] key = {
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00"), new Byte("00"), new Byte("00")
+        };
+
+        KeySchedule.keyExpansion(key);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testKeyExpansionException2() {
+
+        Byte[] key = {
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00"), new Byte("00"), new Byte("00"), new Byte("00"),
+                new Byte("00")
+        };
+
+        KeySchedule.keyExpansion(key);
 
     }
 

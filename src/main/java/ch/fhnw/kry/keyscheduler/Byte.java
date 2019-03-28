@@ -12,6 +12,7 @@ public class Byte {
     private String hex;
 
     public Byte(String nr, Base base) {
+        nr = nr.replace(" ", "");
         this.hex = Integer.toString(Integer.parseInt(nr, base.getBase()), HEX.getBase());
     }
 
