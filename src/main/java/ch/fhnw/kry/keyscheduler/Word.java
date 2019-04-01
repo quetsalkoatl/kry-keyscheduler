@@ -54,6 +54,10 @@ public class Word {
         return ret;
     }
 
+    public Byte[] getBytes() {
+        return bytes;
+    }
+
     public String getHex() {
         return Arrays.stream(bytes)
                 .map(Byte::getHex)
