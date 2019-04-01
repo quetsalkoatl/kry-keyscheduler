@@ -34,7 +34,7 @@ public class KeyScheduleTest {
                 new Word("b4 ef 5b cb"), new Word("3e 92 e2 11"), new Word("23 e9 51 cf"), new Word("6f 8f 18 8e")
         };
 
-        Word[] result = KeySchedule.keyExpansion(key);
+        Word[] result = KeySchedule.keyExpansion(key, AESConfig.AES_128);
 
         assertArrayEquals(expected, result);
     }
@@ -62,7 +62,7 @@ public class KeyScheduleTest {
                 new Word("d6 0a 35 88"), new Word("e4 72 f0 7b"), new Word("82 d2 d7 85"), new Word("8c d7 c3 26")
         };
 
-        Word[] result = KeySchedule.keyExpansion(key);
+        Word[] result = KeySchedule.keyExpansion(key, AESConfig.AES_128);
 
         assertArrayEquals(expected, result);
     }
@@ -90,7 +90,7 @@ public class KeyScheduleTest {
                 new Word("13 11 1d 7f"), new Word("e3 94 4a 17"), new Word("f3 07 a7 8b"), new Word("4d 2b 30 c5")
         };
 
-        Word[] result = KeySchedule.keyExpansion(key);
+        Word[] result = KeySchedule.keyExpansion(key, AESConfig.AES_128);
 
         assertArrayEquals(expected, result);
     }
@@ -118,7 +118,7 @@ public class KeyScheduleTest {
                 new Word("ae 12 7c da"), new Word("db 47 9b a8"), new Word("f2 20 df 3d"), new Word("48 58 f6 b1")
         };
 
-        Word[] result = KeySchedule.keyExpansion(key);
+        Word[] result = KeySchedule.keyExpansion(key, AESConfig.AES_128);
 
         assertArrayEquals(expected, result);
     }
@@ -147,7 +147,7 @@ public class KeyScheduleTest {
                 new Word("ae 12 7c da"), new Word("db 47 99 a8"), new Word("f2 20 df 3d"), new Word("48 58 f6 b1")
         }; //                           bit changed here: ^
 
-        Word[] result = KeySchedule.keyExpansion(key);
+        Word[] result = KeySchedule.keyExpansion(key, AESConfig.AES_128);
 
         assertFalse(Arrays.equals(expected, result));
     }
@@ -161,7 +161,7 @@ public class KeyScheduleTest {
                 new Byte("00"), new Byte("00"), new Byte("00")
         };
 
-        KeySchedule.keyExpansion(key);
+        KeySchedule.keyExpansion(key, AESConfig.AES_128);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -174,7 +174,7 @@ public class KeyScheduleTest {
                 new Byte("00")
         };
 
-        KeySchedule.keyExpansion(key);
+        KeySchedule.keyExpansion(key, AESConfig.AES_128);
     }
 
 }

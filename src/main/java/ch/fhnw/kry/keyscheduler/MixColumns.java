@@ -2,13 +2,6 @@ package ch.fhnw.kry.keyscheduler;
 
 public class MixColumns {
 
-    private static int[][] rjindael = {
-            {2, 3, 1, 1},
-            {1, 2, 3, 1},
-            {1, 1, 2, 3},
-            {3, 1, 1, 2}
-    };
-
     public static Byte[] mixColumns(Byte[] in) {
         Byte[] out = new Byte[in.length];
         for (int i = 0; i < in.length / 4; i++) {

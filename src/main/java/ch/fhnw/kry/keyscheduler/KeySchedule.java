@@ -10,15 +10,15 @@ public class KeySchedule {
             new Word("1b000000"), new Word("36000000")
     };
 
-    public static Word[] keyExpansion(Byte[] key) {
-        if (key.length != 16) {
-            throw new IllegalArgumentException("Key size must be 16 Byte");
+    public static Word[] keyExpansion(Byte[] key, AESConfig conf) {
+        if (key.length != conf.getKeySize()*4) {
+            throw new IllegalArgumentException("Key size must be "+(conf.getKeySize()*4)+" Bytes");
         }
-        Word[] w = new Word[44];
+        Word[] w = new Word[conf.getBlockSize() * (conf.getRounds()+1)];
         for (int i = 0; i < 4; i++) {
             w[i] = new Word(key[4*i],key[4*i + 1],key[4*i + 2],key[4*i + 3]);
         }
-        for (int i = 4; i < 44; i++) {
+        for (int i = 4; i < w.length; i++) {
             Word tmp = w[i-1];
             if (i % 4 == 0) {
                 tmp = Word.xor(Word.subWord(Word.rotWord(tmp)), rcon[i/4 - 1]);
