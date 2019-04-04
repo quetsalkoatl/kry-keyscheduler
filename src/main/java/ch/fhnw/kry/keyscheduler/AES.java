@@ -1,5 +1,8 @@
 package ch.fhnw.kry.keyscheduler;
 
+/**
+ * main class for cipher and decipher
+ */
 public class AES {
 
     public static Byte[] cipher(Byte[] in, Word[] expKey, AESConfig conf) {

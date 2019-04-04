@@ -2,6 +2,9 @@ package ch.fhnw.kry.keyscheduler;
 
 public class SubBytes {
 
+    /**
+     * s-box to extract the subbytes from
+     */
     private static final Byte[] sbox = {
             new Byte("63"), new Byte("7c"), new Byte("77"), new Byte("7b"),
             new Byte("f2"), new Byte("6b"), new Byte("6f"), new Byte("c5"),
@@ -84,6 +87,9 @@ public class SubBytes {
             new Byte("b0"), new Byte("54"), new Byte("bb"), new Byte("16")
     };
 
+    /**
+     * inverted s-box
+     */
     private static final Byte[] invSbox = {
             new Byte("52"), new Byte("09"), new Byte("6a"), new Byte("d5"),
             new Byte("30"), new Byte("36"), new Byte("a5"), new Byte("38"),
@@ -166,34 +172,76 @@ public class SubBytes {
             new Byte("55"), new Byte("21"), new Byte("0c"), new Byte("7d")
     };
 
+    /**
+     * get subbyte from String value
+     * @param nr    String value of Byte in given base
+     * @param base  Base of String (ex. BIN or HEX)
+     * @return  subbyte
+     */
     public static Byte get(String nr, Base base) {
         return sbox[Integer.parseInt(nr, base.getBase())];
     }
 
+    /**
+     * get subbyte from HEX String
+     * @param hex  hexadecimal String of Byte
+     * @return  subbyte
+     */
     public static Byte get(String hex) {
         return get(hex, Base.HEX);
     }
 
+    /**
+     * get subbyte from integer
+     * @param dez  integer value of Byte
+     * @return  subbyte
+     */
     public static Byte get(int dez) {
         return sbox[dez];
     }
 
+    /**
+     * get subbyte from Byte
+     * @param b  Byte object
+     * @return  subbyte
+     */
     public static Byte get(Byte b) {
         return get(b.getDez());
     }
 
+    /**
+     * get inverted subbyte from String value
+     * @param nr    String value of Byte in given base
+     * @param base  Base of String (ex. BIN or HEX)
+     * @return  inverted subbyte
+     */
     public static Byte invGet(String nr, Base base) {
         return invSbox[Integer.parseInt(nr, base.getBase())];
     }
 
+    /**
+     * get inverted subbyte from HEX String
+     * @param hex  hexadecimal String of Byte
+     * @return  inverted subbyte
+     */
     public static Byte invGet(String hex) {
         return invGet(hex, Base.HEX);
     }
 
+    /**
+     * get inverted subbyte from integer
+     * @param dez  integer value of Byte
+     * @return  inverted subbyte
+     */
     public static Byte invGet(int dez) {
         return invSbox[dez];
     }
 
+    /**
+     * get inverted subbyte from Byte
+     * @param b  Byte object
+     * @return  inverted subbyte
+     */
     public static Byte invGet(Byte b) {
         return invGet(b.getDez());
     }

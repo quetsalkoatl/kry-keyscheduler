@@ -1,6 +1,10 @@
 package ch.fhnw.kry.keyscheduler;
 
+/**
+ * wrapper for the different configuration of the AES key sizes
+ */
 public enum AESConfig {
+
     AES_128(4, 4, 10),
     AES_192(6, 4, 12),
     AES_256(8, 4, 14);

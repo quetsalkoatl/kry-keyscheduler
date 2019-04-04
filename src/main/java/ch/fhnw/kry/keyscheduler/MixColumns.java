@@ -101,17 +101,17 @@ public class MixColumns {
     }
 
     private static void generateTables() {
-        Byte a = new Byte(1);
-        Byte d;
+        int a = 1;
+        int d;
         for(int c=0; c < 255; c++) {
-            atable[c] = a;
+            atable[c] = new Byte(a & 0xFF);
             /* Multiply by three */
-            d = new Byte(a.getDez() & 0x80);
-            a = new Byte(a.getDez() << 1);
-            if(d.getDez() == 0x80) {
-                a = new Byte(a.getDez() ^ 0x1b);
+            d = a & 0x80;
+            a = a << 1;
+            if(d == 0x80) {
+                a = a ^ 0x1b;
             }
-            a = new Byte(a.getDez() ^ atable[c].getDez());
+            a = a ^ atable[c].getDez();
             /* Set the log table value */
             ltable[atable[c].getDez()] = new Byte(c);
         }

@@ -5,6 +5,9 @@ import java.util.stream.Collectors;
 
 public class Word {
 
+    /**
+     * one word is 4 bytes
+     */
     private final Byte[] bytes = new Byte[4];
 
     private Word() {}
@@ -16,6 +19,11 @@ public class Word {
         this.bytes[3] = b3;
     }
 
+    /**
+     * constructor for String to Word
+     * @param word  String value of Word in given base
+     * @param base  Base of String (ex. BIN or HEX)
+     */
     public Word(String word, Base base) {
         if (base == Base.DEZ) {
             throw new IllegalArgumentException("decimal not allowed!");
@@ -29,14 +37,28 @@ public class Word {
         }
     }
 
+    /**
+     * constructor for HEX String to Word
+     * @param hex hexadecimal String value of Word
+     */
     public Word(String hex) {
         this(hex, Base.HEX);
     }
 
+    /**
+     * rotate bytes in word
+     * @param in  word to be rotated
+     * @return  rotated word
+     */
     public static Word rotWord(Word in) {
         return new Word(in.bytes[1], in.bytes[2], in.bytes[3], in.bytes[0]);
     }
 
+    /**
+     * get subbyte of all bytes in word
+     * @param in  Word to get subbytes for
+     * @return  Word containing subbytes
+     */
     public static Word subWord(Word in) {
         return new Word(
                 SubBytes.get(in.bytes[0]),
@@ -46,6 +68,12 @@ public class Word {
         );
     }
 
+    /**
+     * perform xor operation between two Words
+     * @param w1  first word
+     * @param w2  second word
+     * @return  "xored" Word
+     */
     public static Word xor(Word w1, Word w2) {
         Word ret = new Word();
         for (int i = 0; i < 4; i++) {
@@ -58,12 +86,20 @@ public class Word {
         return bytes;
     }
 
+    /**
+     * get HEX representation of Word
+     * @return  hexadecimal String
+     */
     public String getHex() {
         return Arrays.stream(bytes)
                 .map(Byte::getHex)
                 .collect(Collectors.joining(" "));
     }
 
+    /**
+     * get BIN representation of Word
+     * @return  binary String
+     */
     public String getBin() {
         return Arrays.stream(bytes)
                 .map(Byte::getBin)
