@@ -55,6 +55,8 @@ Bei der Implementation habe ich mich sehr genau an den Pseudocode aus der Präse
 \section*{Tests}
 Die Tests für den Keyscheduler befinden sich in der Testklasse \code{src/test/java/ch/fhnw /kry/keyscheduler/KeyScheduleTest.java}. Die Testfälle habe ich von der Webseite https://www.samiam.org/key-schedule.html. Es gibt jeweils ein Test für die edge cases (alles \code{00} und alles \code{ff}), einen bei dem die 16 Bytes im Key durchgezähhlt sind (\code{00} bis \code{0f}) und einen Key dazwischen, ausserdem habe ich einen Test erstellt, der fehlschlägt, weil ein Bit in der Ausgabe verändert wurde und zwei Tests, die falsche Schlüssel übergeben.
 
+\subsection*{\code{KeyScheduleTest.java}}
+
 \code{testKeyExpansion1()}:
 
 INPUT\\
@@ -77,12 +79,12 @@ b4 ef 5b cb 3e 92 e2 11 23 e9 51 cf 6f 8f 18 8e
 
 RESULTAT: {\color{dgreen}Erfolgreich}
 
+\newpage
 \code{testKeyExpansion2()}:
 
 INPUT\\
 \code{ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff}
 
-\newpage
 EXPECTED OUTPUT\\
 \code{
 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff\\
